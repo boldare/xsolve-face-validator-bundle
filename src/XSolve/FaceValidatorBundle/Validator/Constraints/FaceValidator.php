@@ -48,7 +48,7 @@ class FaceValidator extends ConstraintValidator
             return;
         }
 
-        $this->evaluateConditions($detectionResult);
+        $this->evaluateConditions($detectionResult, $constraint);
     }
 
     private function extractPath($value)
@@ -57,17 +57,17 @@ class FaceValidator extends ConstraintValidator
             return $value;
         }
 
-        if ($value instanceof \SplFileInfo) {
+        if ($value instanceof \SplFileInfo && $value->isFile()) {
             return $value->getRealPath();
         }
 
         return null;
     }
 
-    private function evaluateConditions(FaceDetectionResult $result)
+    private function evaluateConditions(FaceDetectionResult $result, Face $constraint)
     {
         foreach ($this->conditions as $condition) {
-            $evaluation = $condition->evaluate($result);
+            $evaluation = $condition->evaluate($result, $constraint);
 
             if (!$evaluation->isSuccessful()) {
                 $this->context->addViolation($evaluation->getMessage());
