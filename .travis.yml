@@ -12,5 +12,8 @@ php:
 env:
   - SYMFONY_VERSION="3.3.*"
 
+install:
+    - composer install
+
 script:
   - vendor/bin/phpunit
