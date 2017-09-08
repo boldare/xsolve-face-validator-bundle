@@ -38,22 +38,22 @@ class Face extends Constraint
     /**
      * @var string
      */
-    public $glassesMessage = 'There should be no glasses on the picture.';
+    public $glassesMessage = 'There should be no glasses in the picture.';
 
     /**
      * @var string
      */
-    public $sunglassesMessage = 'There should be no sunglasses on the picture.';
+    public $sunglassesMessage = 'There should be no sunglasses in the picture.';
 
     /**
      * @var string
      */
-    public $makeupMessage = 'The face should not be wearing any makeup.';
+    public $makeupMessage = 'The person should not be wearing any makeup.';
 
     /**
      * @var string
      */
-    public $blurredMessage = 'The picture is to blurred.';
+    public $blurredMessage = 'The picture is too blurred.';
 
     /**
      * @var string

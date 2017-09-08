@@ -10,16 +10,10 @@ class FaceIsNotCovered implements FaceValidationSpecification
 {
     public function evaluate(FaceDetectionResult $result, Face $constraint): Evaluation
     {
-        if ($constraint->allowCoveringFace) {
+        if ($constraint->allowCoveringFace || !in_array(Accessory::MASK(), $result->getAccessories(), true)) {
             return new Evaluation(true);
         }
 
-        foreach ($result->getAccessories() as $accessory) {
-            if ($accessory === Accessory::MASK()) {
-                return new Evaluation(false, $constraint->faceCoveredMessage);
-            }
-        }
-
-        return new Evaluation(true);
+        return new Evaluation(false, $constraint->faceCoveredMessage);
     }
 }
