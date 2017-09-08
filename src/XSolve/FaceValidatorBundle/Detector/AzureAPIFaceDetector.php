@@ -3,6 +3,7 @@
 namespace XSolve\FaceValidatorBundle\Detector;
 
 use XSolve\FaceValidatorBundle\Client\AzureFaceAPIClient;
+use XSolve\FaceValidatorBundle\Exception\NoFaceDetectedException;
 use XSolve\FaceValidatorBundle\Factory\FaceDetectionResultFactory;
 use XSolve\FaceValidatorBundle\Result\FaceDetectionResult;
 

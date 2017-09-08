@@ -1,0 +1,16 @@
+language: php
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+php:
+  - 7.0
+
+env:
+  - SYMFONY_VERSION="3.3.*"
+
+script:
+  - vendor/bin/phpunit
