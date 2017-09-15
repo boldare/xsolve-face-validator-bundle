@@ -6,9 +6,9 @@ use MyCLabs\Enum\Enum;
 
 class ExposureLevel extends Enum
 {
-    const GOOD = 'GoodExposure';
+    const GOOD = 'goodExposure';
 
-    const OVER = 'OverExposure';
+    const OVER = 'overExposure';
 
-    const UNDER = 'UnderExposure';
+    const UNDER = 'underExposure';
 }

@@ -14,14 +14,14 @@ class BlurLevel extends Enum
 
     public function isLowerOrEqual(BlurLevel $other): bool
     {
-        if (self::HIGH() === $other) {
+        if (self::HIGH() == $other) {
             return true;
         }
 
-        if (self::MEDIUM() === $other) {
-            return in_array($this, [self::MEDIUM(), self::LOW()], true);
+        if (self::MEDIUM() == $other) {
+            return in_array($this, [self::MEDIUM(), self::LOW()]);
         }
 
-        return self::LOW() === $other;
+        return self::LOW() == $this;
     }
 }
