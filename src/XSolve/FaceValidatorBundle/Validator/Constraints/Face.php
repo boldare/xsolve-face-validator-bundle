@@ -73,7 +73,7 @@ class Face extends Constraint
     /**
      * @var float
      */
-    public $minFaceRatio = 0.5;
+    public $minFaceRatio = 0.15;
 
     /**
      * @var bool
