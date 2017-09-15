@@ -10,7 +10,7 @@ class IsNotWearingSunglasses implements FaceValidationSpecification
 {
     public function evaluate(FaceDetectionResult $result, Face $constraint): Evaluation
     {
-        if ($constraint->allowSunglasses || Glasses::SUN() !== $result->getGlasses()) {
+        if ($constraint->allowSunglasses || Glasses::SUN() != $result->getGlasses()) {
             return new Evaluation(true);
         }
 

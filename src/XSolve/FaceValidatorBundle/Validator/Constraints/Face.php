@@ -83,7 +83,7 @@ class Face extends Constraint
     /**
      * @var float
      */
-    public $maxFaceRotation = 10.0;
+    public $maxFaceRotation = 20.0;
 
     /**
      * @var bool
