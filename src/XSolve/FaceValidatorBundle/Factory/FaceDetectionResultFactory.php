@@ -73,7 +73,7 @@ class FaceDetectionResultFactory
             ),
             array_map(
                 function (array $accessoryData) {
-                    return new Accessory($accessoryData);
+                    return new Accessory($accessoryData['type']);
                 },
                 $this->propertyAccessor->getValue($data, '[faceAttributes][accessories]')
             ),
