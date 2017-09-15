@@ -1,0 +1,64 @@
+parameters:
+    xsolve_face_validator.client.azure.class: XSolve\FaceValidatorBundle\Client\GuzzleWrapper
+    xsolve_face_validator.detector.face.class: XSolve\FaceValidatorBundle\Detector\AzureAPIFaceDetector
+
+services:
+    _defaults:
+        autowire: false
+        autoconfigure: false
+        public: false
+    xsolve_face_validator.client.azure:
+        class: "%xsolve_face_validator.client.azure.class%"
+        arguments:
+            - "%xsolve_face_validator.client.azure.subscription_key%"
+    xsolve_face_validator.detector.face:
+        class: "%xsolve_face_validator.detector.face.class%"
+        arguments:
+            - "@xsolve_face_validator.client.azure"
+            - factory
+    xsolve_face_validator.factory.face_to_image_ratio_calculator:
+        class: XSolve\FaceValidatorBundle\Factory\FaceToImageRatioCalculator
+    xsolve_face_validator.factory.face_detection_result:
+        class: XSolve\FaceValidatorBundle\Factory\FaceDetectionResultFactory
+        arguments:
+            - "@property_accessor"
+            - "@xsolve_face_validator.factory.face_to_image_ratio_calculator"
+    xsolve_face_validator.validator.specification.blur_is_acceptable:
+        class: XSolve\FaceValidatorBundle\Validator\Specification\BlurIsAcceptable
+    xsolve_face_validator.validator.specification.face_is_not_covered:
+        class: XSolve\FaceValidatorBundle\Validator\Specification\FaceIsNotCovered
+    xsolve_face_validator.validator.specification.face_is_of_acceptable_angle:
+        class: XSolve\FaceValidatorBundle\Validator\Specification\FaceIsOfAcceptableAngle
+    xsolve_face_validator.validator.specification.face_is_of_sufficient_size:
+        class: XSolve\FaceValidatorBundle\Validator\Specification\FaceIsOfSufficientSize
+    xsolve_face_validator.validator.specification.hair_is_visible:
+        class: XSolve\FaceValidatorBundle\Validator\Specification\HairIsVisible
+    xsolve_face_validator.validator.specification.is_not_wearing_glasses:
+        class: XSolve\FaceValidatorBundle\Validator\Specification\IsNotWearingGlasses
+    xsolve_face_validator.validator.specification.is_not_wearing_sunglasses:
+        class: XSolve\FaceValidatorBundle\Validator\Specification\IsNotWearingSunglasses
+    xsolve_face_validator.validator.specification.no_makeup:
+        class: XSolve\FaceValidatorBundle\Validator\Specification\NoMakeup
+    xsolve_face_validator.validator.specification.noise_is_acceptable:
+        class: XSolve\FaceValidatorBundle\Validator\Specification\NoiseIsAcceptable
+
+    xsolve_face_validator.validator.validator.face:
+        class: XSolve\FaceValidatorBundle\Validator\Constraints\FaceValidator
+        public: true
+        tags:
+            - { name: validator.constraint_validator }
+        arguments:
+            - "@xsolve_face_validator.detector.face"
+            -
+                - "@xsolve_face_validator.validator.specification.blur_is_acceptable"
+                - "@xsolve_face_validator.validator.specification.face_is_not_covered"
+                - "@xsolve_face_validator.validator.specification.face_is_of_acceptable_angle"
+                - "@xsolve_face_validator.validator.specification.face_is_of_sufficient_size"
+                - "@xsolve_face_validator.validator.specification.hair_is_visible"
+                - "@xsolve_face_validator.validator.specification.is_not_wearing_glasses"
+                - "@xsolve_face_validator.validator.specification.is_not_wearing_sunglasses"
+                - "@xsolve_face_validator.validator.specification.no_makeup"
+                - "@xsolve_face_validator.validator.specification.noise_is_acceptable"
+
+
+

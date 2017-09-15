@@ -66,3 +66,6 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+xsolve_face_validator:
+    azure_subscription_key: "%azure_subscription_key%"
