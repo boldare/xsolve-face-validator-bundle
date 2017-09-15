@@ -57,7 +57,8 @@ class GuzzleWrapper implements AzureFaceAPIClient
             ],
             'body' => $fs,
         ]);
+        $data = json_decode($response->getBody()->getContents(), true);
 
-        return current(json_decode($response->getBody()->getContents(), true));
+        return $data ? current($data) : [];
     }
 }
