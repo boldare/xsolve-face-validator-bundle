@@ -1,6 +1,6 @@
 <?php
 
-namespace XSolve\FaceValidatorBundle\Factory;
+namespace XSolve\FaceValidatorBundle\Calculator;
 
 class FaceToImageRatioCalculator
 {
