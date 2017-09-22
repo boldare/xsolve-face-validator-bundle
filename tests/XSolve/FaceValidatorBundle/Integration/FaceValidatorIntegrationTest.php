@@ -4,14 +4,11 @@ namespace Tests\XSolve\FaceValidatorBundle\Integration;
 
 use Symfony\Component\Validator\ConstraintViolationInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Tests\XSolve\FaceValidatorBundle\GenerateTempImages;
 use XSolve\FaceValidatorBundle\Validator\Constraints\Face;
 
 class FaceValidatorIntegrationTest extends KernelTestCase
 {
-    use GenerateTempImages;
-
-    private const TEMP_DIRECTORY = __DIR__.'/images';
+    private const IMAGES_DIRECTORY = __DIR__.'/../images';
     private const RESPONSES_DIRECTORY = __DIR__.'/responses';
 
     /**
@@ -34,19 +31,10 @@ class FaceValidatorIntegrationTest extends KernelTestCase
     }
 
     /**
-     * {@inheritdoc}
-     */
-    protected function getTempDirectory(): string
-    {
-        return self::TEMP_DIRECTORY;
-    }
-
-    /**
      * @dataProvider validateProvider
      */
-    public function testValidate(Face $constraint, int $width, int $height, array $apiResponse, array $expectedViolations)
+    public function testValidate(Face $constraint, string $imagePath, array $apiResponse, array $expectedViolations)
     {
-        $imagePath = $this->createImage($width, $height);
         $this->client->setResponseData($apiResponse);
         $constraintViolations = $this->validator->validate(new \SplFileInfo($imagePath), [$constraint]);
         $this->assertCount(count($expectedViolations), $constraintViolations);
@@ -69,8 +57,7 @@ class FaceValidatorIntegrationTest extends KernelTestCase
         return [
             [
                 new Face(),
-                1,
-                1,
+                $this->generateImagePath('1x1'),
                 [],
                 [
                     'Face is not visible.',
@@ -78,15 +65,13 @@ class FaceValidatorIntegrationTest extends KernelTestCase
             ],
             [
                 new Face(),
-                100,
-                100,
+                $this->generateImagePath('100x100'),
                 $this->loadResponseFromFile('glasses.json'),
                 [],
             ],
             [
                 new Face(['allowGlasses' => false]),
-                100,
-                100,
+                $this->generateImagePath('100x100'),
                 $this->loadResponseFromFile('glasses.json'),
                 [
                     'There should be no glasses in the picture.',
@@ -94,15 +79,13 @@ class FaceValidatorIntegrationTest extends KernelTestCase
             ],
             [
                 new Face(['maxBlurLevel' => Face::LEVEL_MEDIUM]),
-                100,
-                100,
+                $this->generateImagePath('100x100'),
                 $this->loadResponseFromFile('medium_blur.json'),
                 [],
             ],
             [
                 new Face(),
-                100,
-                100,
+                $this->generateImagePath('100x100'),
                 $this->loadResponseFromFile('medium_blur.json'),
                 [
                     'The picture is too blurred.',
@@ -110,8 +93,7 @@ class FaceValidatorIntegrationTest extends KernelTestCase
             ],
             [
                 new Face(),
-                100,
-                100,
+                $this->generateImagePath('100x100'),
                 $this->loadResponseFromFile('medium_noise.json'),
                 [
                     'The picture is too noisy.',
@@ -119,8 +101,7 @@ class FaceValidatorIntegrationTest extends KernelTestCase
             ],
             [
                 new Face(),
-                100,
-                100,
+                $this->generateImagePath('100x100'),
                 $this->loadResponseFromFile('small_face.json'),
                 [
                     'Face is too small.',
@@ -128,8 +109,7 @@ class FaceValidatorIntegrationTest extends KernelTestCase
             ],
             [
                 new Face(['allowSunglasses' => false]),
-                100,
-                100,
+                $this->generateImagePath('100x100'),
                 $this->loadResponseFromFile('sunglasses.json'),
                 [
                     'There should be no sunglasses in the picture.',
@@ -144,5 +124,10 @@ class FaceValidatorIntegrationTest extends KernelTestCase
         $this->assertFileExists($path);
 
         return json_decode(file_get_contents($path), true);
+    }
+
+    private function generateImagePath(string $imageName): string
+    {
+        return sprintf('%s/%s', self::IMAGES_DIRECTORY, $imageName);
     }
 }

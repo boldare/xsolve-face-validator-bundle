@@ -19,8 +19,17 @@ class KernelTestCase extends BaseKernelTestCase
      */
     public static function tearDownAfterClass()
     {
+        static::ensureKernelShutdown();
         static::removeDirWithFiles(static::$kernel->getCacheDir());
         static::removeDirWithFiles(static::$kernel->getLogDir());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function tearDown()
+    {
+        // shutting down the kernel after each test (which is done in parent class) is not really efficient
     }
 
     private static function removeDirWithFiles(string $path)

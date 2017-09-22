@@ -3,14 +3,11 @@
 namespace Tests\XSolve\FaceValidatorBundle\Calculator;
 
 use PHPUnit\Framework\TestCase;
-use Tests\XSolve\FaceValidatorBundle\GenerateTempImages;
 use XSolve\FaceValidatorBundle\Calculator\FaceToImageRatioCalculator;
 
 class FaceToImageRatioCalculatorTest extends TestCase
 {
-    use GenerateTempImages;
-
-    private const TEMP_DIRECTORY = __DIR__.'/images';
+    private const IMAGES_DIRECTORY = __DIR__.'/../images';
 
     /**
      * @var FaceToImageRatioCalculator
@@ -30,25 +27,23 @@ class FaceToImageRatioCalculatorTest extends TestCase
      * @requires extension gd
      * @dataProvider calculateProvider
      */
-    public function testCalculate(int $imageWidth, int $imageHeight, int $faceWidth, int $faceHeight, float $expectedResult)
+    public function testCalculate(string $path, int $faceWidth, int $faceHeight, float $expectedResult)
     {
-        $path = $this->createImage($imageWidth, $imageHeight);
-
         $this->assertSame($expectedResult, $this->calculator->calculate($path, $faceWidth, $faceHeight));
     }
 
     public function calculateProvider(): array
     {
         return [
-            [100, 100, 0, 0, 0.0],
-            [100, 100, 100, 100, 1.0],
-            [100, 100, 100, 50, 0.5],
-            [100, 100, 50, 50, 0.25],
+            [$this->generateImagePath('100x100'), 0, 0, 0.0],
+            [$this->generateImagePath('100x100'), 100, 100, 1.0],
+            [$this->generateImagePath('100x100'), 100, 50, 0.5],
+            [$this->generateImagePath('100x100'), 50, 50, 0.25],
         ];
     }
 
-    protected function getTempDirectory(): string
+    private function generateImagePath(string $imageName): string
     {
-        return self::TEMP_DIRECTORY;
+        return sprintf('%s/%s', self::IMAGES_DIRECTORY, $imageName);
     }
 }
