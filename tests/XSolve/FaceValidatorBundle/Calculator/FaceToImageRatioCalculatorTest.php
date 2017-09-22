@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\XSolve\FaceValidatorBundle\Factory;
+namespace Tests\XSolve\FaceValidatorBundle\Calculator;
 
 use PHPUnit\Framework\TestCase;
 use Tests\XSolve\FaceValidatorBundle\GenerateTempImages;
-use XSolve\FaceValidatorBundle\Factory\FaceToImageRatioCalculator;
+use XSolve\FaceValidatorBundle\Calculator\FaceToImageRatioCalculator;
 
 class FaceToImageRatioCalculatorTest extends TestCase
 {
