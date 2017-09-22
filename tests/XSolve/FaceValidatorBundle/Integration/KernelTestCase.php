@@ -3,6 +3,7 @@
 namespace Tests\XSolve\FaceValidatorBundle\Integration;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase as BaseKernelTestCase;
+use Symfony\Component\Filesystem\Filesystem;
 
 class KernelTestCase extends BaseKernelTestCase
 {
@@ -34,17 +35,6 @@ class KernelTestCase extends BaseKernelTestCase
 
     private static function removeDirWithFiles(string $path)
     {
-        $iterator = new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS);
-        $files = new \RecursiveIteratorIterator($iterator, \RecursiveIteratorIterator::CHILD_FIRST);
-
-        foreach($files as $file) {
-            if ($file->isDir()){
-                rmdir($file->getRealPath());
-            } else {
-                unlink($file->getRealPath());
-            }
-        }
-
-        rmdir($path);
+        (new Filesystem())->remove($path);
     }
 }
