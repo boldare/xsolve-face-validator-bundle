@@ -16,7 +16,7 @@ Table of contents
 
 Introduction
 =================
-This Symfony3 bundle allows to validate whether an image (for instance uploaded by a user of your app) contains proper face.
+This Symfony3 bundle allows to validate whether an image (for instance uploaded by a user of your app) contains person's face.
 Internally it uses MS Azure Face API so in order to use it you need an account in MS Azure. In free plan the API allows
 to make 30 000 requests per month and 20 per minute so it should be enough to be useful for low traffic apps.
 
@@ -78,14 +78,15 @@ used in a form to gather the data from users and perform validation, it already 
 ```php
 // src/AppBundle/Entity/User.php
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use XSolve\FaceValidatorBundle\Validator\Constraints\Face;
 
 class User
 {
     /**
-     * @var Symfony\Component\HttpFoundation\File\UploadedFile
-
+     * @var UploadedFile
+     *
      * @Assert\Image()
      * @Assert\Face()
      */
@@ -107,7 +108,7 @@ For other validation config formats please check [dedicated documentation sectio
 
 Now when executing regular validation, for instance in your controller:
 ```php
-// src/AppBundle/Controller/ProductController.php
+// src/AppBundle/Controller/UserController.php
 
 namespace AppBundle\Controller;
 
@@ -186,3 +187,29 @@ For blur and noise levels the possible options are:
   * low
   * medium
   * high
+
+It's also possible, just like with any other Symfony validator, to use it directly against given value (either file path or an instance of \SplFileInfo).
+
+```php
+// src/AppBundle/Controller/ImageController.php
+
+namespace AppBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+
+class ImageController extends Controller
+{
+    public function validateAction(Request $request)
+    {
+        /* @var $validator ValidatorInterface */
+        $validator = $this->get('validator');
+        $constraintViolations = $validator->validate(
+            '/path/to/your/image/file.png',
+            new Face([
+                // you can pass the options mentioned before to the validation constraint
+            ])
+        );
+    }
+}
+```
