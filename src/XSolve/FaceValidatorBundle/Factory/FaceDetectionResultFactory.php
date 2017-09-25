@@ -3,6 +3,7 @@
 namespace XSolve\FaceValidatorBundle\Factory;
 
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
+use XSolve\FaceValidatorBundle\Calculator\FaceToImageRatioCalculator;
 use XSolve\FaceValidatorBundle\Result\Accessory;
 use XSolve\FaceValidatorBundle\Result\Blur;
 use XSolve\FaceValidatorBundle\Result\BlurLevel;

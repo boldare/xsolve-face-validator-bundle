@@ -68,7 +68,7 @@ class Face extends Constraint
     /**
      * @var bool
      */
-    public $allowCoveringFace = false;
+    public $allowCoveringFace = true;
 
     /**
      * @var float
@@ -83,7 +83,7 @@ class Face extends Constraint
     /**
      * @var bool
      */
-    public $allowSunglasses = false;
+    public $allowSunglasses = true;
 
     /**
      * @var bool
@@ -93,7 +93,7 @@ class Face extends Constraint
     /**
      * @var bool
      */
-    public $allowNoHair = false;
+    public $allowNoHair = true;
 
     /**
      * @var string
