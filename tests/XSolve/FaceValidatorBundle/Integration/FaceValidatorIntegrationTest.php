@@ -84,7 +84,7 @@ class FaceValidatorIntegrationTest extends KernelTestCase
                 [],
             ],
             [
-                new Face(),
+                new Face(['maxBlurLevel' => Face::LEVEL_LOW]),
                 $this->generateImagePath('100x100'),
                 $this->loadResponseFromFile('medium_blur.json'),
                 [
@@ -92,7 +92,7 @@ class FaceValidatorIntegrationTest extends KernelTestCase
                 ],
             ],
             [
-                new Face(),
+                new Face(['maxNoiseLevel' => Face::LEVEL_LOW]),
                 $this->generateImagePath('100x100'),
                 $this->loadResponseFromFile('medium_noise.json'),
                 [
