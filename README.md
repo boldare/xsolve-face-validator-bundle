@@ -39,7 +39,7 @@ Getting started
 =================
 Add the bundle to your Symfony3 project using [Composer](https://getcomposer.org/):
 ```bash
-$ composer require face-validator
+$ composer require xsolve-pl/face-validator-bundle
 ```
 
 You'll need also to register the bundle in your kernel:
