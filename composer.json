@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": ">=7.1.0",
+        "php": ">=7.0.0",
         "guzzlehttp/guzzle": "~6.3",
         "myclabs/php-enum": "~1.5",
         "symfony/http-kernel": "3.3.*",
