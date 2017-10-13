@@ -1,7 +1,7 @@
 ----------
 # XSolve Face Validator Bundle
 
-[![Build Status](https://travis-ci.com/xsolve-pl/xsolve-face-validator-bundle.svg?token=SjQKyns8C8K1pNxxqcyw&branch=master)](https://travis-ci.com/xsolve-pl/xsolve-face-validator-bundle)
+[![Build Status](https://travis-ci.org/xsolve-pl/xsolve-face-validator-bundle.svg?branch=master)](https://travis-ci.org/xsolve-pl/xsolve-face-validator-bundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/xsolve-pl/xsolve-face-validator-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/xsolve-pl/xsolve-face-validator-bundle/?branch=master)
 
 ============================
