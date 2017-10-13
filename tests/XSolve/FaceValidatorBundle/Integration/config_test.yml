@@ -1,5 +1,6 @@
 xsolve_face_validator:
     azure_subscription_key: dummy_azure_subscription_key
+    region: westeurope
 
 framework:
     test: ~

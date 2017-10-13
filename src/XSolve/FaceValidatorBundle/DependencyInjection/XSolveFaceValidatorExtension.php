@@ -18,6 +18,10 @@ class XSolveFaceValidatorExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('xsolve_face_validator.client.azure.subscription_key', $config['azure_subscription_key']);
+        $container->setParameter(
+            'xsolve_face_validator.client.azure.base_uri',
+            sprintf('https://%s.api.cognitive.microsoft.com/face/v1.0/', $config['region'])
+        );
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

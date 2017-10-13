@@ -2,13 +2,10 @@
 
 namespace XSolve\FaceValidatorBundle\Client;
 
-use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 
 class GuzzleWrapper implements AzureFaceAPIClient
 {
-    const URI = 'https://westeurope.api.cognitive.microsoft.com/face/v1.0/';
-
     /**
      * @var ClientInterface
      */
@@ -27,9 +24,9 @@ class GuzzleWrapper implements AzureFaceAPIClient
         'accessories', 'blur', 'exposure', 'noise',
     ];
 
-    public function __construct(string $subscriptionKey)
+    public function __construct(ClientInterface $client, string $subscriptionKey)
     {
-        $this->client = new Client(['base_uri' => self::URI]);
+        $this->client = $client;
         $this->subscriptionKey = $subscriptionKey;
     }
 
