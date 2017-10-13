@@ -104,5 +104,4 @@ class Face extends Constraint
      * @var string
      */
     public $maxNoiseLevel = self::LEVEL_HIGH;
-
 }
