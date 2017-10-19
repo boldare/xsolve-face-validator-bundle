@@ -8,8 +8,8 @@ use XSolve\FaceValidatorBundle\Validator\Constraints\Face;
 
 class FaceValidatorIntegrationTest extends KernelTestCase
 {
-    private const IMAGES_DIRECTORY = __DIR__.'/../images';
-    private const RESPONSES_DIRECTORY = __DIR__.'/responses';
+    const IMAGES_DIRECTORY = __DIR__.'/../images';
+    const RESPONSES_DIRECTORY = __DIR__.'/responses';
 
     /**
      * @var ValidatorInterface
