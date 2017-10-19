@@ -7,7 +7,7 @@ use XSolve\FaceValidatorBundle\Calculator\FaceToImageRatioCalculator;
 
 class FaceToImageRatioCalculatorTest extends TestCase
 {
-    private const IMAGES_DIRECTORY = __DIR__.'/../images';
+    const IMAGES_DIRECTORY = __DIR__.'/../images';
 
     /**
      * @var FaceToImageRatioCalculator
