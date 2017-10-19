@@ -1,0 +1,83 @@
+{
+    "faceId": "sunglasses",
+    "faceRectangle": {
+        "top": 83,
+        "left": 76,
+        "width": 97,
+        "height": 97
+    },
+    "faceAttributes": {
+        "smile": 0.112,
+        "headPose": {
+            "pitch": 0,
+            "roll": -4,
+            "yaw": 0.3
+        },
+        "gender": "male",
+        "age": 68.9,
+        "facialHair": {
+            "moustache": 0,
+            "beard": 0,
+            "sideburns": 0
+        },
+        "glasses": "Sunglasses",
+        "emotion": {
+            "anger": 0,
+            "contempt": 0,
+            "disgust": 0,
+            "fear": 0,
+            "happiness": 0.112,
+            "neutral": 0.857,
+            "sadness": 0.03,
+            "surprise": 0
+        },
+        "blur": {
+            "blurLevel": "low",
+            "value": 0.19
+        },
+        "exposure": {
+            "exposureLevel": "goodExposure",
+            "value": 0.68
+        },
+        "noise": {
+            "noiseLevel": "low",
+            "value": 0.21
+        },
+        "makeup": {
+            "eyeMakeup": false,
+            "lipMakeup": false
+        },
+        "accessories": [{
+                "type": "glasses",
+                "confidence": 0.99
+            }],
+        "occlusion": {
+            "foreheadOccluded": false,
+            "eyeOccluded": false,
+            "mouthOccluded": false
+        },
+        "hair": {
+            "bald": 0.02,
+            "invisible": false,
+            "hairColor": [{
+                    "color": "brown",
+                    "confidence": 0.99
+                }, {
+                    "color": "blond",
+                    "confidence": 0.59
+                }, {
+                    "color": "gray",
+                    "confidence": 0.59
+                }, {
+                    "color": "red",
+                    "confidence": 0.2
+                }, {
+                    "color": "black",
+                    "confidence": 0.19
+                }, {
+                    "color": "other",
+                    "confidence": 0.11
+                }]
+        }
+    }
+}

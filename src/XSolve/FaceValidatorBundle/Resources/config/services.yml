@@ -17,7 +17,7 @@ services:
             - "@xsolve_face_validator.client.azure"
             - "@xsolve_face_validator.factory.face_detection_result"
     xsolve_face_validator.factory.face_to_image_ratio_calculator:
-        class: XSolve\FaceValidatorBundle\Factory\FaceToImageRatioCalculator
+        class: XSolve\FaceValidatorBundle\Calculator\FaceToImageRatioCalculator
     xsolve_face_validator.factory.face_detection_result:
         class: XSolve\FaceValidatorBundle\Factory\FaceDetectionResultFactory
         arguments:

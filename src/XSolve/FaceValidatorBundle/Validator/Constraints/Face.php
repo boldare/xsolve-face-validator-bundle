@@ -58,16 +58,6 @@ class Face extends Constraint
     /**
      * @var string
      */
-    public $overExposedMessage = 'The picture is over exposed.';
-
-    /**
-     * @var string
-     */
-    public $underExposedMessage = 'The picture is under exposed.';
-
-    /**
-     * @var string
-     */
     public $noiseMessage = 'The picture is too noisy.';
 
     /**
@@ -78,7 +68,7 @@ class Face extends Constraint
     /**
      * @var bool
      */
-    public $allowCoveringFace = false;
+    public $allowCoveringFace = true;
 
     /**
      * @var float
@@ -93,7 +83,7 @@ class Face extends Constraint
     /**
      * @var bool
      */
-    public $allowSunglasses = false;
+    public $allowSunglasses = true;
 
     /**
      * @var bool
@@ -103,16 +93,16 @@ class Face extends Constraint
     /**
      * @var bool
      */
-    public $allowNoHair = false;
+    public $allowNoHair = true;
 
     /**
      * @var string
      */
-    public $maxBlurLevel = self::LEVEL_LOW;
+    public $maxBlurLevel = self::LEVEL_HIGH;
 
     /**
      * @var string
      */
-    public $maxNoiseLevel = self::LEVEL_LOW;
+    public $maxNoiseLevel = self::LEVEL_HIGH;
 
 }

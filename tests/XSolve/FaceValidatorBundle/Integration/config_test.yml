@@ -1,0 +1,14 @@
+xsolve_face_validator:
+    azure_subscription_key: dummy_azure_subscription_key
+
+framework:
+    test: ~
+    validation: ~
+
+services:
+    xsolve_face_validator.client.azure:
+        class: Tests\XSolve\FaceValidatorBundle\Integration\AzureClientMock
+        public: true
+
+parameters:
+    kernel.secret: dummy_kernel_secret
