@@ -4,6 +4,9 @@ namespace XSolve\FaceValidatorBundle\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 
+/**
+ * @Annotation
+ */
 class Face extends Constraint
 {
     const LEVEL_LOW = 'low';
