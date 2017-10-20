@@ -80,7 +80,7 @@ used in a form to gather the data from users and perform validation, it already 
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
-use XSolve\FaceValidatorBundle\Validator\Constraints\Face;
+use XSolve\FaceValidatorBundle\Validator\Constraints as XSolveAssert;
 
 class User
 {
@@ -88,7 +88,7 @@ class User
      * @var UploadedFile
      *
      * @Assert\Image()
-     * @Assert\Face()
+     * @XSolveAssert\Face()
      */
     public $profilePicture;
 }
