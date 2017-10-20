@@ -59,13 +59,21 @@ class AppKernel extends Kernel
 }
 ```
 
-In the configuration file you must provide your [MS Azure subscription key for Face API](https://azure.microsoft.com/en-us/try/cognitive-services/?api=face-api):
+In the configuration file you must provide your [MS Azure subscription key for Face API](https://azure.microsoft.com/en-us/try/cognitive-services/?api=face-api)
+and the region name (can be taken from the `Endpoint` section in MS Azure portal). Available regions can be previewed by running:
+
+```bash
+$ bin/console config:dump-reference xsolve_face_validator
+```
+
+Example configuration:
 
 ```yml
 # app/config/config.yml
 
 xsolve_face_validator:
     azure_subscription_key: your-subscription-key
+    region: westeurope
 ```
 
 Usage
