@@ -18,3 +18,4 @@ install:
 
 script:
   - vendor/bin/phpunit
+  - vendor/bin/php-cs-fixer fix -vvv --using-cache=no --diff --rules=@Symfony --dry-run --path-mode=intersection `git diff --name-only --diff-filter=ACMRTUXB '$TRAVIS_COMMIT_RANGE'`
