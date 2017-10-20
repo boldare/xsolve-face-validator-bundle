@@ -155,7 +155,7 @@ options with their default values are shown on the example below:
 // src/AppBundle/Entity/User.php
 
 use Symfony\Component\Validator\Constraints as Assert;
-use XSolve\FaceValidatorBundle\Validator\Constraints\Face;
+use XSolve\FaceValidatorBundle\Validator\Constraints as XSolveAssert;
 
 class User
 {
@@ -163,7 +163,7 @@ class User
      * @var Symfony\Component\HttpFoundation\File\UploadedFile
 
      * @Assert\Image()
-     * @Assert\Face(
+     * @XSolveAssert\Face(
      *     minFaceRatio = 0.15,
      *     allowCoveringFace = true,
      *     maxFaceRotation = 20.0,
