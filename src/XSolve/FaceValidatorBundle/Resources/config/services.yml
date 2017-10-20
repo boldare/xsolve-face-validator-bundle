@@ -7,9 +7,15 @@ services:
         autowire: false
         autoconfigure: false
         public: false
+    xsolve_face_validator.guzzle_client:
+        class: GuzzleHttp\Client
+        public: false
+        arguments:
+            - { base_uri: "%xsolve_face_validator.client.azure.base_uri%" }
     xsolve_face_validator.client.azure:
         class: "%xsolve_face_validator.client.azure.class%"
         arguments:
+            - "@xsolve_face_validator.guzzle_client"
             - "%xsolve_face_validator.client.azure.subscription_key%"
     xsolve_face_validator.detector.face:
         class: "%xsolve_face_validator.detector.face.class%"

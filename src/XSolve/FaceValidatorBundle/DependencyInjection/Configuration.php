@@ -22,6 +22,10 @@ class Configuration implements ConfigurationInterface
                     ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
+                ->enumNode('region')
+                    ->isRequired()
+                    ->values(AllowedRegions::NAMES)
+                ->end()
             ->end();
 
         return $treeBuilder;

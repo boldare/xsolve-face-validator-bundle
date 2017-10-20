@@ -38,7 +38,6 @@ class FaceValidatorTest extends TestCase
     private $firstCondition;
 
     /**
-     *
      * @var ObjectProphecy|FaceValidationSpecification
      */
     private $secondCondition;
