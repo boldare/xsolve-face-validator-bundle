@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: michal
- * Date: 9/15/17
- * Time: 1:39 PM
- */
 
-namespace tests\XSolve\FaceValidatorBundle\Result;
+namespace Tests\XSolve\FaceValidatorBundle\Result;
 
 use PHPUnit\Framework\TestCase;
 use XSolve\FaceValidatorBundle\Result\NoiseLevel;
