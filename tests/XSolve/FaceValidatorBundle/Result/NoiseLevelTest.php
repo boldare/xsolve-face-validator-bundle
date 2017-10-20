@@ -7,52 +7,51 @@ use XSolve\FaceValidatorBundle\Result\NoiseLevel;
 
 class NoiseLevelTest extends TestCase
 {
-
-    /**
-     * @var NoiseLevel
-     */
-    private $referenceNoiseLevel;
-
+    
     /**
      * @var NoiseLevel
      */
     private $testedNoiseLevel;
 
-    public function testIsLowerOrEqual()
+    public function testIsLowerOrEqualToLowNoiseLvl()
     {
-        $this->referenceNoiseLevel = new NoiseLevel(NoiseLevel::LOW);
+        $lowNoiseLevel = NoiseLevel::LOW();
 
-        $this->testedNoiseLevel = new NoiseLevel(NoiseLevel::LOW);
-        $this->assertTrue($this->testedNoiseLevel->isLowerOrEqual($this->referenceNoiseLevel));
+        $this->testedNoiseLevel = NoiseLevel::LOW();
+        $this->assertTrue($this->testedNoiseLevel->isLowerOrEqual($lowNoiseLevel));
 
-        $this->testedNoiseLevel = new NoiseLevel(NoiseLevel::MEDIUM);
-        $this->assertNotTrue($this->testedNoiseLevel->isLowerOrEqual($this->referenceNoiseLevel));
+        $this->testedNoiseLevel = NoiseLevel::MEDIUM();
+        $this->assertNotTrue($this->testedNoiseLevel->isLowerOrEqual($lowNoiseLevel));
 
-        $this->testedNoiseLevel = new NoiseLevel(NoiseLevel::HIGH);
-        $this->assertNotTrue($this->testedNoiseLevel->isLowerOrEqual($this->referenceNoiseLevel));
+        $this->testedNoiseLevel = NoiseLevel::HIGH();
+        $this->assertNotTrue($this->testedNoiseLevel->isLowerOrEqual($lowNoiseLevel));
+    }
 
+    public function testIsLowerOrEqualToMediumNoiseLvl()
+    {
+        $mediumNoiseLevel = NoiseLevel::MEDIUM();
 
-        $this->referenceNoiseLevel = new NoiseLevel(NoiseLevel::MEDIUM);
+        $this->testedNoiseLevel = NoiseLevel::LOW();
+        $this->assertTrue($this->testedNoiseLevel->isLowerOrEqual($mediumNoiseLevel));
 
-        $this->testedNoiseLevel = new NoiseLevel(NoiseLevel::LOW);
-        $this->assertTrue($this->testedNoiseLevel->isLowerOrEqual($this->referenceNoiseLevel));
+        $this->testedNoiseLevel = NoiseLevel::MEDIUM();
+        $this->assertTrue($this->testedNoiseLevel->isLowerOrEqual($mediumNoiseLevel));
 
-        $this->testedNoiseLevel = new NoiseLevel(NoiseLevel::MEDIUM);
-        $this->assertTrue($this->testedNoiseLevel->isLowerOrEqual($this->referenceNoiseLevel));
+        $this->testedNoiseLevel = NoiseLevel::HIGH();
+        $this->assertNotTrue($this->testedNoiseLevel->isLowerOrEqual($mediumNoiseLevel));
+    }
 
-        $this->testedNoiseLevel = new NoiseLevel(NoiseLevel::HIGH);
-        $this->assertNotTrue($this->testedNoiseLevel->isLowerOrEqual($this->referenceNoiseLevel));
+    public function testIsLowerOrEqualToHighNoiseLvl()
+    {
+        $highNoiseLevel = NoiseLevel::HIGH();
 
+        $this->testedNoiseLevel = NoiseLevel::LOW();
+        $this->assertTrue($this->testedNoiseLevel->isLowerOrEqual($highNoiseLevel));
 
-        $this->referenceNoiseLevel = new NoiseLevel(NoiseLevel::HIGH);
+        $this->testedNoiseLevel = NoiseLevel::MEDIUM();
+        $this->assertTrue($this->testedNoiseLevel->isLowerOrEqual($highNoiseLevel));
 
-        $this->testedNoiseLevel = new NoiseLevel(NoiseLevel::LOW);
-        $this->assertTrue($this->testedNoiseLevel->isLowerOrEqual($this->referenceNoiseLevel));
-
-        $this->testedNoiseLevel = new NoiseLevel(NoiseLevel::MEDIUM);
-        $this->assertTrue($this->testedNoiseLevel->isLowerOrEqual($this->referenceNoiseLevel));
-
-        $this->testedNoiseLevel = new NoiseLevel(NoiseLevel::HIGH);
-        $this->assertTrue($this->testedNoiseLevel->isLowerOrEqual($this->referenceNoiseLevel));
+        $this->testedNoiseLevel = NoiseLevel::HIGH();
+        $this->assertTrue($this->testedNoiseLevel->isLowerOrEqual($highNoiseLevel));
     }
 }

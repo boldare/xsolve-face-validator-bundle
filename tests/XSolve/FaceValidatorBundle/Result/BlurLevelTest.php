@@ -11,48 +11,47 @@ class BlurLevelTest extends TestCase
     /**
      * @var BlurLevel
      */
-    private $referenceBlurLevel;
-
-    /**
-     * @var BlurLevel
-     */
     private $testedBlurLevel;
 
-    public function testIsLowerOrEqual()
+    public function testIsLowerOrEqualToLowBlurLvl()
     {
-        $this->referenceBlurLevel = new BlurLevel(BlurLevel::LOW);
+        $lowBlurLevel = BlurLevel::LOW();
 
-        $this->testedBlurLevel = new BlurLevel(BlurLevel::LOW);
-        $this->assertTrue($this->testedBlurLevel->isLowerOrEqual($this->referenceBlurLevel));
+        $this->testedBlurLevel = BlurLevel::LOW();
+        $this->assertTrue($this->testedBlurLevel->isLowerOrEqual($lowBlurLevel));
 
-        $this->testedBlurLevel = new BlurLevel(BlurLevel::MEDIUM);
-        $this->assertNotTrue($this->testedBlurLevel->isLowerOrEqual($this->referenceBlurLevel));
+        $this->testedBlurLevel = BlurLevel::MEDIUM();
+        $this->assertNotTrue($this->testedBlurLevel->isLowerOrEqual($lowBlurLevel));
 
-        $this->testedBlurLevel = new BlurLevel(BlurLevel::HIGH);
-        $this->assertNotTrue($this->testedBlurLevel->isLowerOrEqual($this->referenceBlurLevel));
+        $this->testedBlurLevel = BlurLevel::HIGH();
+        $this->assertNotTrue($this->testedBlurLevel->isLowerOrEqual($lowBlurLevel));
+    }
 
+    public function testIsLowerOrEqualToMediumBlurLvl()
+    {
+        $mediumBlurLevel = BlurLevel::MEDIUM();
 
-        $this->referenceBlurLevel = new BlurLevel(BlurLevel::MEDIUM);
+        $this->testedBlurLevel = BlurLevel::LOW();
+        $this->assertTrue($this->testedBlurLevel->isLowerOrEqual($mediumBlurLevel));
 
-        $this->testedBlurLevel = new BlurLevel(BlurLevel::LOW);
-        $this->assertTrue($this->testedBlurLevel->isLowerOrEqual($this->referenceBlurLevel));
+        $this->testedBlurLevel = BlurLevel::MEDIUM();
+        $this->assertTrue($this->testedBlurLevel->isLowerOrEqual($mediumBlurLevel));
 
-        $this->testedBlurLevel = new BlurLevel(BlurLevel::MEDIUM);
-        $this->assertTrue($this->testedBlurLevel->isLowerOrEqual($this->referenceBlurLevel));
+        $this->testedBlurLevel = BlurLevel::HIGH();
+        $this->assertNotTrue($this->testedBlurLevel->isLowerOrEqual($mediumBlurLevel));
+    }
 
-        $this->testedBlurLevel = new BlurLevel(BlurLevel::HIGH);
-        $this->assertNotTrue($this->testedBlurLevel->isLowerOrEqual($this->referenceBlurLevel));
+    public function testIsLowerOrEqualToHighBlurLvl()
+    {
+        $highBlurLevel = BlurLevel::HIGH();
 
+        $this->testedBlurLevel = BlurLevel::LOW();
+        $this->assertTrue($this->testedBlurLevel->isLowerOrEqual($highBlurLevel));
 
-        $this->referenceBlurLevel = new BlurLevel(BlurLevel::HIGH);
+        $this->testedBlurLevel = BlurLevel::MEDIUM();
+        $this->assertTrue($this->testedBlurLevel->isLowerOrEqual($highBlurLevel));
 
-        $this->testedBlurLevel = new BlurLevel(BlurLevel::LOW);
-        $this->assertTrue($this->testedBlurLevel->isLowerOrEqual($this->referenceBlurLevel));
-
-        $this->testedBlurLevel = new BlurLevel(BlurLevel::MEDIUM);
-        $this->assertTrue($this->testedBlurLevel->isLowerOrEqual($this->referenceBlurLevel));
-
-        $this->testedBlurLevel = new BlurLevel(BlurLevel::HIGH);
-        $this->assertTrue($this->testedBlurLevel->isLowerOrEqual($this->referenceBlurLevel));
+        $this->testedBlurLevel = BlurLevel::HIGH();
+        $this->assertTrue($this->testedBlurLevel->isLowerOrEqual($highBlurLevel));
     }
 }
