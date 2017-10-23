@@ -5,9 +5,9 @@ namespace XSolve\FaceValidatorBundle\Result;
 use MyCLabs\Enum\Enum;
 
 /**
- * @method self LOW()
- * @method self MEDIUM()
- * @method self HIGH()
+ * @method static LOW()
+ * @method static MEDIUM()
+ * @method static HIGH()
  */
 class BlurLevel extends Enum
 {

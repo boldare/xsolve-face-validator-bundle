@@ -5,8 +5,8 @@ namespace XSolve\FaceValidatorBundle\Result;
 use MyCLabs\Enum\Enum;
 
 /**
- * @method self MALE()
- * @method self FEMALE()
+ * @method static MALE()
+ * @method static FEMALE()
  */
 class Gender extends Enum
 {

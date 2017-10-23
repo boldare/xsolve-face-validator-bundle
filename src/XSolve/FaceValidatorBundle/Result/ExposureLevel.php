@@ -5,9 +5,9 @@ namespace XSolve\FaceValidatorBundle\Result;
 use MyCLabs\Enum\Enum;
 
 /**
- * @method self GOOD()
- * @method self OVER()
- * @method self UNDER()
+ * @method static GOOD()
+ * @method static OVER()
+ * @method static UNDER()
  */
 class ExposureLevel extends Enum
 {
