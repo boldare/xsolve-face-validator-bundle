@@ -16,7 +16,6 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('xsolve_face_validator');
 
         $rootNode
-            ->canBeEnabled()
             ->children()
                 ->scalarNode('azure_subscription_key')
                     ->isRequired()

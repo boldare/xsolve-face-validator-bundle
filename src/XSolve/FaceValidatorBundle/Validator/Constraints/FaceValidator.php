@@ -36,7 +36,7 @@ class FaceValidator extends ConstraintValidator
 
         $path = $this->extractPath($value);
 
-        if (!$path) {
+        if (null === $path) {
             return;
         }
 

@@ -29,7 +29,7 @@ class AzureAPIFaceDetector implements FaceDetector
     {
         $data = $this->client->detect($filePath);
 
-        if (!$data) {
+        if (empty($data)) {
             throw new NoFaceDetectedException();
         }
 

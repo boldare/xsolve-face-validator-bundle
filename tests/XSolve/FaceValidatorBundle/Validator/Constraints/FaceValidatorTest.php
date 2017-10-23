@@ -106,7 +106,7 @@ class FaceValidatorTest extends TestCase
     {
         return [
             [null],
-            [''],
+            [new \stdClass()],
             [new \SplFileInfo('dummy')],
         ];
     }
