@@ -38,7 +38,8 @@ class FaceValidatorIntegrationTest extends KernelTestCase
         $this->client->setResponseData($apiResponse);
         $constraintViolations = $this->validator->validate(new \SplFileInfo($imagePath), [$constraint]);
         $this->assertCount(count($expectedViolations), $constraintViolations);
-        $violationMessages = array_map(function (ConstraintViolationInterface $violation) {
+        $violationMessages = array_map(
+            function (ConstraintViolationInterface $violation) {
                 return $violation->getMessage();
             },
             iterator_to_array($constraintViolations)

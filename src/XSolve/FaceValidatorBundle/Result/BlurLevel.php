@@ -17,7 +17,7 @@ class BlurLevel extends Enum
 
     const HIGH = 'high';
 
-    public function isLowerOrEqual(BlurLevel $other): bool
+    public function isLowerOrEqual(self $other): bool
     {
         if (self::HIGH() == $other) {
             return true;
