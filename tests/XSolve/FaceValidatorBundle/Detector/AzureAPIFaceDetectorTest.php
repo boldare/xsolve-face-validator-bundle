@@ -46,7 +46,7 @@ class AzureAPIFaceDetectorTest extends TestCase
     }
 
     /**
-     * @expectedException XSolve\FaceValidatorBundle\Exception\NoFaceDetectedException
+     * @expectedException \XSolve\FaceValidatorBundle\Exception\NoFaceDetectedException
      */
     public function testDetectNoResult()
     {

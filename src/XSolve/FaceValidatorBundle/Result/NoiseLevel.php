@@ -17,7 +17,7 @@ class NoiseLevel extends Enum
 
     const HIGH = 'high';
 
-    public function isLowerOrEqual(NoiseLevel $other): bool
+    public function isLowerOrEqual(self $other): bool
     {
         if (self::HIGH() == $other) {
             return true;

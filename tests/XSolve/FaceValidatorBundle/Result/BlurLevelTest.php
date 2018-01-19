@@ -7,7 +7,6 @@ use XSolve\FaceValidatorBundle\Result\BlurLevel;
 
 class BlurLevelTest extends TestCase
 {
-
     /**
      * @var BlurLevel
      */

@@ -7,7 +7,6 @@ use XSolve\FaceValidatorBundle\Result\NoiseLevel;
 
 class NoiseLevelTest extends TestCase
 {
-    
     /**
      * @var NoiseLevel
      */
